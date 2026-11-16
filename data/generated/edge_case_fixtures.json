@@ -1,0 +1,47 @@
+[
+  {
+    "case_id": "EX-001",
+    "entity_type": "SalaryRecord",
+    "record_id": "FIX-SAL-EXPIRED-001",
+    "employee_id": "EMP-000001",
+    "issue_type": "EXPIRED_BAND",
+    "payload_json": "{\"effective_date\": \"2026-06-01\", \"band_id\": \"FIX-BAND-EXPIRED-001\", \"band_effective_from\": \"2023-01-01\", \"band_effective_to\": \"2024-12-31\"}",
+    "expected_decision": "Reject expired band; flag for current effective band lookup"
+  },
+  {
+    "case_id": "EX-002",
+    "entity_type": "SalaryRecord",
+    "record_id": "FIX-SAL-FTE-001",
+    "employee_id": "EMP-000002",
+    "issue_type": "FTE_IGNORED",
+    "payload_json": "{\"base_salary\": 500000, \"currency\": \"INR\", \"fte\": 0.5, \"annualized_inr_incorrect\": 500000, \"annualized_inr_expected\": 1000000}",
+    "expected_decision": "Flag normalization reconciliation failure"
+  },
+  {
+    "case_id": "EX-003",
+    "entity_type": "SalaryRecord",
+    "record_id": "FIX-SAL-FX-001",
+    "employee_id": "EMP-000003",
+    "issue_type": "CURRENCY_CONVERSION_MISSING",
+    "payload_json": "{\"base_salary\": 40000, \"currency\": \"XXX\", \"fte\": 1.0, \"annualized_inr\": null}",
+    "expected_decision": "Quarantine comparison; do not assume an FX rate"
+  },
+  {
+    "case_id": "EX-004",
+    "entity_type": "AdjustmentProposal",
+    "record_id": "FIX-ADJ-UNAPPROVED-001",
+    "employee_id": "EMP-000004",
+    "issue_type": "UNAPPROVED_ADJUSTMENT",
+    "payload_json": "{\"status\": \"APPLIED\", \"manager_approved_by\": null, \"hr_approved_by\": null}",
+    "expected_decision": "Flag illegal lifecycle transition; require approval evidence"
+  },
+  {
+    "case_id": "EX-005",
+    "entity_type": "ComparableGroup",
+    "record_id": "FIX-GROUP-INCOMPARABLE-001",
+    "employee_id": "EMP-000005",
+    "issue_type": "INCOMPARABLE_GROUP",
+    "payload_json": "{\"member_role_id_a\": \"ROLE-04\", \"member_role_id_b\": \"ROLE-12\", \"rationale\": \"\"}",
+    "expected_decision": "Reject grouping or require documented job-related rationale"
+  }
+]

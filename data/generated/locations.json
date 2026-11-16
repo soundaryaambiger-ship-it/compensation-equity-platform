@@ -1,0 +1,37 @@
+[
+  {
+    "id": "LOC-BLR",
+    "name": "Bengaluru",
+    "country": "IN",
+    "currency": "INR",
+    "fx_to_inr": 1.0
+  },
+  {
+    "id": "LOC-HYD",
+    "name": "Hyderabad",
+    "country": "IN",
+    "currency": "INR",
+    "fx_to_inr": 1.0
+  },
+  {
+    "id": "LOC-PUN",
+    "name": "Pune",
+    "country": "IN",
+    "currency": "INR",
+    "fx_to_inr": 1.0
+  },
+  {
+    "id": "LOC-LON",
+    "name": "London",
+    "country": "UK",
+    "currency": "GBP",
+    "fx_to_inr": 105.0
+  },
+  {
+    "id": "LOC-NYC",
+    "name": "New York",
+    "country": "US",
+    "currency": "USD",
+    "fx_to_inr": 83.0
+  }
+]

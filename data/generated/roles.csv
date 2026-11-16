@@ -1,0 +1,21 @@
+id,name,family
+ROLE-01,Software Engineer,Engineering
+ROLE-02,Data Analyst,Analytics
+ROLE-03,HR Specialist,People
+ROLE-04,QA Engineer,Engineering
+ROLE-05,Operations Analyst,Operations
+ROLE-06,Embedded Engineer,Engineering
+ROLE-07,Security Analyst,Security
+ROLE-08,Product Manager,Product
+ROLE-09,Sales Executive,Sales
+ROLE-10,Support Engineer,Support
+ROLE-11,Cloud Engineer,Engineering
+ROLE-12,DevOps Engineer,Engineering
+ROLE-13,UX Designer,Design
+ROLE-14,Financial Analyst,Finance
+ROLE-15,Recruiter,People
+ROLE-16,Business Analyst,Business
+ROLE-17,Network Engineer,IT
+ROLE-18,Technical Writer,Content
+ROLE-19,Project Manager,Product
+ROLE-20,Customer Success,Support

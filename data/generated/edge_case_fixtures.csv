@@ -1,0 +1,6 @@
+case_id,entity_type,record_id,employee_id,issue_type,payload_json,expected_decision
+EX-001,SalaryRecord,FIX-SAL-EXPIRED-001,EMP-000001,EXPIRED_BAND,"{""effective_date"": ""2026-06-01"", ""band_id"": ""FIX-BAND-EXPIRED-001"", ""band_effective_from"": ""2023-01-01"", ""band_effective_to"": ""2024-12-31""}",Reject expired band; flag for current effective band lookup
+EX-002,SalaryRecord,FIX-SAL-FTE-001,EMP-000002,FTE_IGNORED,"{""base_salary"": 500000, ""currency"": ""INR"", ""fte"": 0.5, ""annualized_inr_incorrect"": 500000, ""annualized_inr_expected"": 1000000}",Flag normalization reconciliation failure
+EX-003,SalaryRecord,FIX-SAL-FX-001,EMP-000003,CURRENCY_CONVERSION_MISSING,"{""base_salary"": 40000, ""currency"": ""XXX"", ""fte"": 1.0, ""annualized_inr"": null}",Quarantine comparison; do not assume an FX rate
+EX-004,AdjustmentProposal,FIX-ADJ-UNAPPROVED-001,EMP-000004,UNAPPROVED_ADJUSTMENT,"{""status"": ""APPLIED"", ""manager_approved_by"": null, ""hr_approved_by"": null}",Flag illegal lifecycle transition; require approval evidence
+EX-005,ComparableGroup,FIX-GROUP-INCOMPARABLE-001,EMP-000005,INCOMPARABLE_GROUP,"{""member_role_id_a"": ""ROLE-04"", ""member_role_id_b"": ""ROLE-12"", ""rationale"": """"}",Reject grouping or require documented job-related rationale

@@ -1,0 +1,6 @@
+id,name,country,currency,fx_to_inr
+LOC-BLR,Bengaluru,IN,INR,1.0
+LOC-HYD,Hyderabad,IN,INR,1.0
+LOC-PUN,Pune,IN,INR,1.0
+LOC-LON,London,UK,GBP,105.0
+LOC-NYC,New York,US,USD,83.0

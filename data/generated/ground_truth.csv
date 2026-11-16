@@ -1,0 +1,16 @@
+record_id,employee_id,issue_type,expected_decision,reason
+SAL-EMP-000991-2026-01,EMP-000991,FTE_IGNORED,FLAG_FOR_HUMAN_REVIEW,Synthetic salary deliberately placed materially below comparable baseline
+SAL-EMP-000997-2026-01,EMP-000997,UNEXPLAINED_OUTLIER,FLAG_FOR_HUMAN_REVIEW,Synthetic salary deliberately placed materially below comparable baseline
+SAL-EMP-001982-2026-01,EMP-001982,FTE_IGNORED,FLAG_FOR_HUMAN_REVIEW,Synthetic salary deliberately placed materially below comparable baseline
+SAL-EMP-001994-2026-01,EMP-001994,UNEXPLAINED_OUTLIER,FLAG_FOR_HUMAN_REVIEW,Synthetic salary deliberately placed materially below comparable baseline
+SAL-EMP-002973-2026-01,EMP-002973,FTE_IGNORED,FLAG_FOR_HUMAN_REVIEW,Synthetic salary deliberately placed materially below comparable baseline
+SAL-EMP-002991-2026-01,EMP-002991,UNEXPLAINED_OUTLIER,FLAG_FOR_HUMAN_REVIEW,Synthetic salary deliberately placed materially below comparable baseline
+SAL-EMP-003964-2026-01,EMP-003964,FTE_IGNORED,FLAG_FOR_HUMAN_REVIEW,Synthetic salary deliberately placed materially below comparable baseline
+SAL-EMP-003988-2026-01,EMP-003988,UNEXPLAINED_OUTLIER,FLAG_FOR_HUMAN_REVIEW,Synthetic salary deliberately placed materially below comparable baseline
+SAL-EMP-004955-2026-01,EMP-004955,FTE_IGNORED,FLAG_FOR_HUMAN_REVIEW,Synthetic salary deliberately placed materially below comparable baseline
+SAL-EMP-004985-2026-01,EMP-004985,UNEXPLAINED_OUTLIER,FLAG_FOR_HUMAN_REVIEW,Synthetic salary deliberately placed materially below comparable baseline
+FIX-SAL-EXPIRED-001,EMP-000001,EXPIRED_BAND,Reject expired band; flag for current effective band lookup,"{""effective_date"": ""2026-06-01"", ""band_id"": ""FIX-BAND-EXPIRED-001"", ""band_effective_from"": ""2023-01-01"", ""band_effective_to"": ""2024-12-31""}"
+FIX-SAL-FTE-001,EMP-000002,FTE_IGNORED,Flag normalization reconciliation failure,"{""base_salary"": 500000, ""currency"": ""INR"", ""fte"": 0.5, ""annualized_inr_incorrect"": 500000, ""annualized_inr_expected"": 1000000}"
+FIX-SAL-FX-001,EMP-000003,CURRENCY_CONVERSION_MISSING,Quarantine comparison; do not assume an FX rate,"{""base_salary"": 40000, ""currency"": ""XXX"", ""fte"": 1.0, ""annualized_inr"": null}"
+FIX-ADJ-UNAPPROVED-001,EMP-000004,UNAPPROVED_ADJUSTMENT,Flag illegal lifecycle transition; require approval evidence,"{""status"": ""APPLIED"", ""manager_approved_by"": null, ""hr_approved_by"": null}"
+FIX-GROUP-INCOMPARABLE-001,EMP-000005,INCOMPARABLE_GROUP,Reject grouping or require documented job-related rationale,"{""member_role_id_a"": ""ROLE-04"", ""member_role_id_b"": ""ROLE-12"", ""rationale"": """"}"

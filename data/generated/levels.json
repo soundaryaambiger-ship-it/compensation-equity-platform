@@ -1,0 +1,52 @@
+[
+  {
+    "id": "L01",
+    "name": "Trainee",
+    "rank": 1
+  },
+  {
+    "id": "L02",
+    "name": "Junior",
+    "rank": 2
+  },
+  {
+    "id": "L03",
+    "name": "Associate I",
+    "rank": 3
+  },
+  {
+    "id": "L04",
+    "name": "Associate II",
+    "rank": 4
+  },
+  {
+    "id": "L05",
+    "name": "Mid I",
+    "rank": 5
+  },
+  {
+    "id": "L06",
+    "name": "Mid II",
+    "rank": 6
+  },
+  {
+    "id": "L07",
+    "name": "Senior I",
+    "rank": 7
+  },
+  {
+    "id": "L08",
+    "name": "Senior II",
+    "rank": 8
+  },
+  {
+    "id": "L09",
+    "name": "Lead",
+    "rank": 9
+  },
+  {
+    "id": "L10",
+    "name": "Principal",
+    "rank": 10
+  }
+]

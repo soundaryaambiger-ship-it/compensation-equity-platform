@@ -1,0 +1,1 @@
+React/Vite single-page dashboard. Pages call the FastAPI service through src/services/api.js; no employee or dashboard metric fixtures are embedded in the UI. Configure VITE_API_URL if the API is not at http://localhost:8000/api/v1.

@@ -1,0 +1,107 @@
+[
+  {
+    "record_id": "SAL-EMP-000991-2026-01",
+    "employee_id": "EMP-000991",
+    "issue_type": "FTE_IGNORED",
+    "expected_decision": "FLAG_FOR_HUMAN_REVIEW",
+    "reason": "Synthetic salary deliberately placed materially below comparable baseline"
+  },
+  {
+    "record_id": "SAL-EMP-000997-2026-01",
+    "employee_id": "EMP-000997",
+    "issue_type": "UNEXPLAINED_OUTLIER",
+    "expected_decision": "FLAG_FOR_HUMAN_REVIEW",
+    "reason": "Synthetic salary deliberately placed materially below comparable baseline"
+  },
+  {
+    "record_id": "SAL-EMP-001982-2026-01",
+    "employee_id": "EMP-001982",
+    "issue_type": "FTE_IGNORED",
+    "expected_decision": "FLAG_FOR_HUMAN_REVIEW",
+    "reason": "Synthetic salary deliberately placed materially below comparable baseline"
+  },
+  {
+    "record_id": "SAL-EMP-001994-2026-01",
+    "employee_id": "EMP-001994",
+    "issue_type": "UNEXPLAINED_OUTLIER",
+    "expected_decision": "FLAG_FOR_HUMAN_REVIEW",
+    "reason": "Synthetic salary deliberately placed materially below comparable baseline"
+  },
+  {
+    "record_id": "SAL-EMP-002973-2026-01",
+    "employee_id": "EMP-002973",
+    "issue_type": "FTE_IGNORED",
+    "expected_decision": "FLAG_FOR_HUMAN_REVIEW",
+    "reason": "Synthetic salary deliberately placed materially below comparable baseline"
+  },
+  {
+    "record_id": "SAL-EMP-002991-2026-01",
+    "employee_id": "EMP-002991",
+    "issue_type": "UNEXPLAINED_OUTLIER",
+    "expected_decision": "FLAG_FOR_HUMAN_REVIEW",
+    "reason": "Synthetic salary deliberately placed materially below comparable baseline"
+  },
+  {
+    "record_id": "SAL-EMP-003964-2026-01",
+    "employee_id": "EMP-003964",
+    "issue_type": "FTE_IGNORED",
+    "expected_decision": "FLAG_FOR_HUMAN_REVIEW",
+    "reason": "Synthetic salary deliberately placed materially below comparable baseline"
+  },
+  {
+    "record_id": "SAL-EMP-003988-2026-01",
+    "employee_id": "EMP-003988",
+    "issue_type": "UNEXPLAINED_OUTLIER",
+    "expected_decision": "FLAG_FOR_HUMAN_REVIEW",
+    "reason": "Synthetic salary deliberately placed materially below comparable baseline"
+  },
+  {
+    "record_id": "SAL-EMP-004955-2026-01",
+    "employee_id": "EMP-004955",
+    "issue_type": "FTE_IGNORED",
+    "expected_decision": "FLAG_FOR_HUMAN_REVIEW",
+    "reason": "Synthetic salary deliberately placed materially below comparable baseline"
+  },
+  {
+    "record_id": "SAL-EMP-004985-2026-01",
+    "employee_id": "EMP-004985",
+    "issue_type": "UNEXPLAINED_OUTLIER",
+    "expected_decision": "FLAG_FOR_HUMAN_REVIEW",
+    "reason": "Synthetic salary deliberately placed materially below comparable baseline"
+  },
+  {
+    "record_id": "FIX-SAL-EXPIRED-001",
+    "employee_id": "EMP-000001",
+    "issue_type": "EXPIRED_BAND",
+    "expected_decision": "Reject expired band; flag for current effective band lookup",
+    "reason": "{\"effective_date\": \"2026-06-01\", \"band_id\": \"FIX-BAND-EXPIRED-001\", \"band_effective_from\": \"2023-01-01\", \"band_effective_to\": \"2024-12-31\"}"
+  },
+  {
+    "record_id": "FIX-SAL-FTE-001",
+    "employee_id": "EMP-000002",
+    "issue_type": "FTE_IGNORED",
+    "expected_decision": "Flag normalization reconciliation failure",
+    "reason": "{\"base_salary\": 500000, \"currency\": \"INR\", \"fte\": 0.5, \"annualized_inr_incorrect\": 500000, \"annualized_inr_expected\": 1000000}"
+  },
+  {
+    "record_id": "FIX-SAL-FX-001",
+    "employee_id": "EMP-000003",
+    "issue_type": "CURRENCY_CONVERSION_MISSING",
+    "expected_decision": "Quarantine comparison; do not assume an FX rate",
+    "reason": "{\"base_salary\": 40000, \"currency\": \"XXX\", \"fte\": 1.0, \"annualized_inr\": null}"
+  },
+  {
+    "record_id": "FIX-ADJ-UNAPPROVED-001",
+    "employee_id": "EMP-000004",
+    "issue_type": "UNAPPROVED_ADJUSTMENT",
+    "expected_decision": "Flag illegal lifecycle transition; require approval evidence",
+    "reason": "{\"status\": \"APPLIED\", \"manager_approved_by\": null, \"hr_approved_by\": null}"
+  },
+  {
+    "record_id": "FIX-GROUP-INCOMPARABLE-001",
+    "employee_id": "EMP-000005",
+    "issue_type": "INCOMPARABLE_GROUP",
+    "expected_decision": "Reject grouping or require documented job-related rationale",
+    "reason": "{\"member_role_id_a\": \"ROLE-04\", \"member_role_id_b\": \"ROLE-12\", \"rationale\": \"\"}"
+  }
+]

@@ -1,0 +1,3 @@
+const BASE=import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
+async function request(path,options={}){const r=await fetch(`${BASE}${path}`,options);if(!r.ok)throw new Error(`${r.status}: ${await r.text()}`);return r.json()}
+export const api={health:()=>request('/health'),dashboard:()=>request('/dashboard'),employees:(skip=0)=>request(`/employees?skip=${skip}&limit=100`),analysis:()=>request('/analysis'),proposals:()=>request('/proposals'),decision:(id,decision)=>request(`/proposals/${id}/decision?decision=${decision}`,{method:'POST'}),assistantChat:(question)=>request('/assistant/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question})})};

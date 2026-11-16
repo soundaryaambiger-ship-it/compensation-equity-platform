@@ -1,0 +1,1 @@
+The six agents are small deterministic Python services. Each accepts and returns dictionaries, making the pipeline easy to test and replace. `orchestrator.py` calls them in dependency order and records an execution trace. No agent approves a pay change.

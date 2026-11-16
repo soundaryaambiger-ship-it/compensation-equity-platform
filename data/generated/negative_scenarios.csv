@@ -1,0 +1,6 @@
+case_id,issue_type,description,expected
+EX-001,EXPIRED_BAND,Salary effective date is after band expiry,Do not use expired band; flag missing effective band
+EX-002,FTE_IGNORED,Raw salary is compared without annualizing for FTE,Normalize salary to 1.0 FTE before comparison
+EX-003,FX_MISSING,Foreign currency salary lacks a valid FX rate,Quarantine comparison; do not assume INR parity
+EX-004,UNAPPROVED_ADJUSTMENT,Adjustment is marked applied without approval,Flag lifecycle violation; require approval trail
+EX-005,INCOMPARABLE_GROUP,Different role families are grouped without rationale,Reject group or require documented comparability rationale

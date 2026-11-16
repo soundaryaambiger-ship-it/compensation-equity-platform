@@ -1,0 +1,32 @@
+[
+  {
+    "case_id": "EX-001",
+    "issue_type": "EXPIRED_BAND",
+    "description": "Salary effective date is after band expiry",
+    "expected": "Do not use expired band; flag missing effective band"
+  },
+  {
+    "case_id": "EX-002",
+    "issue_type": "FTE_IGNORED",
+    "description": "Raw salary is compared without annualizing for FTE",
+    "expected": "Normalize salary to 1.0 FTE before comparison"
+  },
+  {
+    "case_id": "EX-003",
+    "issue_type": "FX_MISSING",
+    "description": "Foreign currency salary lacks a valid FX rate",
+    "expected": "Quarantine comparison; do not assume INR parity"
+  },
+  {
+    "case_id": "EX-004",
+    "issue_type": "UNAPPROVED_ADJUSTMENT",
+    "description": "Adjustment is marked applied without approval",
+    "expected": "Flag lifecycle violation; require approval trail"
+  },
+  {
+    "case_id": "EX-005",
+    "issue_type": "INCOMPARABLE_GROUP",
+    "description": "Different role families are grouped without rationale",
+    "expected": "Reject group or require documented comparability rationale"
+  }
+]

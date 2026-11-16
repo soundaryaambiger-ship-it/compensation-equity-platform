@@ -1,0 +1,56 @@
+{
+  "seed": 20261022,
+  "employees": 5000,
+  "salary_history_years": 3,
+  "synthetic_only": true,
+  "files": {
+    "compensation_bands.csv": {
+      "sha256": "eda36773218bdfae409a962bd28f3185c7ca504403e7d3bef1c94ea8254510ec",
+      "rows": 1000
+    },
+    "edge_case_fixtures.csv": {
+      "sha256": "790010489fd909e8967345761584600f35bccc5a674c5674a5503135933b9855",
+      "rows": 5
+    },
+    "employees.csv": {
+      "sha256": "42e6eaa6212b7e65df9447d503b4bced05f43d9e1024c2ac962e39dec9c8c6f7",
+      "rows": 5000
+    },
+    "ground_truth.csv": {
+      "sha256": "e6877a71f7395468a81d775e5b0fc0ce66b8abde7a54de8a6fca39d561875f86",
+      "rows": 15
+    },
+    "levels.csv": {
+      "sha256": "ace0503c297ad82e68416511e6d0ecd53e0db7f441b8647abc3b53781a0e6ed0",
+      "rows": 10
+    },
+    "locations.csv": {
+      "sha256": "a79f9eb99691a30ee87af85d7b533eca13539a7b535b9de25cb3c30d2d8a483e",
+      "rows": 5
+    },
+    "negative_scenarios.csv": {
+      "sha256": "560f5da4eba0e7082c8dedcbe4d22ba49ec8f3b0865a0668e81b77b96da6e953",
+      "rows": 5
+    },
+    "performance_evidence.csv": {
+      "sha256": "76043b5840db295e717b45b4d8bcc5e2a20b3fdc82271d968c05ed4984f69387",
+      "rows": 5000
+    },
+    "promotions.csv": {
+      "sha256": "ab48e711e391e28e26a2ac7aeaed4bb20f03f4d8f25d36ac5fdb181a7294adea",
+      "rows": 124
+    },
+    "roles.csv": {
+      "sha256": "49c33606e7cad645849acbd10e31809d019bd84ab14076dd0baf6e5f73a3f03c",
+      "rows": 20
+    },
+    "salary_records.csv": {
+      "sha256": "a50f97a0bb6292cbb8baf0a365b6060cd0d0eff1d3f2c2e1bf2ff66d7c277db3",
+      "rows": 15000
+    },
+    "tenure.csv": {
+      "sha256": "67774486f810faeeb5d83dfb8617b0fbe9a89dde779f5678b4c810bd2699c766",
+      "rows": 5000
+    }
+  }
+}

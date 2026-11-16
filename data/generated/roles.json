@@ -1,0 +1,102 @@
+[
+  {
+    "id": "ROLE-01",
+    "name": "Software Engineer",
+    "family": "Engineering"
+  },
+  {
+    "id": "ROLE-02",
+    "name": "Data Analyst",
+    "family": "Analytics"
+  },
+  {
+    "id": "ROLE-03",
+    "name": "HR Specialist",
+    "family": "People"
+  },
+  {
+    "id": "ROLE-04",
+    "name": "QA Engineer",
+    "family": "Engineering"
+  },
+  {
+    "id": "ROLE-05",
+    "name": "Operations Analyst",
+    "family": "Operations"
+  },
+  {
+    "id": "ROLE-06",
+    "name": "Embedded Engineer",
+    "family": "Engineering"
+  },
+  {
+    "id": "ROLE-07",
+    "name": "Security Analyst",
+    "family": "Security"
+  },
+  {
+    "id": "ROLE-08",
+    "name": "Product Manager",
+    "family": "Product"
+  },
+  {
+    "id": "ROLE-09",
+    "name": "Sales Executive",
+    "family": "Sales"
+  },
+  {
+    "id": "ROLE-10",
+    "name": "Support Engineer",
+    "family": "Support"
+  },
+  {
+    "id": "ROLE-11",
+    "name": "Cloud Engineer",
+    "family": "Engineering"
+  },
+  {
+    "id": "ROLE-12",
+    "name": "DevOps Engineer",
+    "family": "Engineering"
+  },
+  {
+    "id": "ROLE-13",
+    "name": "UX Designer",
+    "family": "Design"
+  },
+  {
+    "id": "ROLE-14",
+    "name": "Financial Analyst",
+    "family": "Finance"
+  },
+  {
+    "id": "ROLE-15",
+    "name": "Recruiter",
+    "family": "People"
+  },
+  {
+    "id": "ROLE-16",
+    "name": "Business Analyst",
+    "family": "Business"
+  },
+  {
+    "id": "ROLE-17",
+    "name": "Network Engineer",
+    "family": "IT"
+  },
+  {
+    "id": "ROLE-18",
+    "name": "Technical Writer",
+    "family": "Content"
+  },
+  {
+    "id": "ROLE-19",
+    "name": "Project Manager",
+    "family": "Product"
+  },
+  {
+    "id": "ROLE-20",
+    "name": "Customer Success",
+    "family": "Support"
+  }
+]
