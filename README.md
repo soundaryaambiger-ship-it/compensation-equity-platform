@@ -15,25 +15,37 @@ A full-stack, synthetic-data reference implementation for effective-dated compen
 See `docs/architecture.png` and `docs/architecture.pdf`.
 
 ## Frontend screenshots
-To show a frontend screenshot on this GitHub project page:
+Screenshots below show the application using synthetic demo data.
 
-1. Run the app and open the page you want to capture (for example, `http://localhost:5173` for Overview).
-2. Save a PNG or JPEG image under `docs/screenshots/`. Use a clear name such as `overview.png`.
-3. Add the following Markdown where the image should appear in this README:
+### Overview dashboard
+![Overview dashboard](docs/screenshots/overview.png)
 
-```markdown
-![Compensation equity Overview](docs/screenshots/overview.png)
+### Overview with EquiQ assistant
+![Overview with EquiQ assistant open](docs/screenshots/overview-assistant.png)
+
+### Compensation analysis and agent results
+![Overview agent results](docs/screenshots/overview-agent-results.png)
+
+### Employee directory
+![Employee directory](docs/screenshots/employees.png)
+
+### Comparisons
+![Band positioning and compa-ratio results](docs/screenshots/comparisons-results.png)
+
+![Comparisons analysis running](docs/screenshots/comparisons-running.png)
+
+### Approvals
+![Adjustment approval queue](docs/screenshots/approvals.png)
+
+To add or replace a screenshot, save the PNG under `docs/screenshots/`, add a Markdown image line such as `![Overview](docs/screenshots/overview.png)` in this section, then run:
+
+```powershell
+git add README.md docs/screenshots/overview.png
+git commit -m "Update frontend screenshots"
+git push
 ```
 
-4. Commit and push the image and README change:
-
-   ```powershell
-   git add README.md docs/screenshots/overview.png
-   git commit -m "Add Overview screenshot"
-   git push
-   ```
-
-Repeat with a different filename and caption for pages such as Employees or Approvals. Only publish screenshots with synthetic/demo data—never real employee names, IDs, or compensation.
+Only publish screenshots with synthetic/demo data—never real employee names, IDs, or compensation.
 
 ## Requirements
 - Python 3.11+
