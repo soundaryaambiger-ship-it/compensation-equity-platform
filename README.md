@@ -6,8 +6,6 @@ EquityIQ is a demonstration project for comparing compensation against role, lev
 
 The application combines a React/Vite dashboard, a Python/FastAPI backend, PostgreSQL, and six deterministic Python agents. All employee and compensation records in the included dataset are synthetic. The analysis is a decision-support demo, not a legal finding or production compensation policy.
 
-**Repository:** [soundaryaambiger-ship-it/compensation-equity-platform](https://github.com/soundaryaambiger-ship-it/compensation-equity-platform)
-
 ---
 
 ## 📸 Frontend screenshots
