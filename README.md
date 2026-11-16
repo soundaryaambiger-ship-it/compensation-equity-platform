@@ -1,142 +1,303 @@
-# Compensation Equity Intelligence Platform
+# ⚖️ EquityIQ — Compensation Equity Intelligence
 
-A full-stack, synthetic-data reference implementation for effective-dated compensation comparison, disparity triage and human-reviewed adjustment proposals. It uses FastAPI, PostgreSQL, SQLAlchemy and React/Vite. All generated people and compensation data are synthetic; do not load confidential HR records into this demo.
+**A full-stack compensation equity analytics and intelligence platform**
 
-## What it does
-- Stores employees, roles, levels, locations, compensation bands, salary history, performance evidence, tenure, promotions, proposals, comparable groups and audit events.
-- Generates deterministic synthetic master and transaction data (5,000 employees by default; 20 roles x 10 levels, 5 locations and 3 salary records per employee for 2024–2026).
-- Normalizes salaries to INR and 1.0 FTE before comparing; uses role + level + location as the default comparison cohort.
-- Computes compa-ratio (`normalized annual salary / band midpoint`) and band position (`(salary - min) / (max - min)`). Values outside [0,1] are below/above band.
-- Runs six deterministic agents and produces potential review proposals. It never directly changes salary.
-- Records approval decisions as status transitions and audit events.
-- Serves live data to the React dashboard through REST endpoints; the dashboard contains no embedded employee counts or sample employee rows.
+EquityIQ is a demonstration project for comparing compensation against role, level, location, effective-dated salary bands, and other documented factors. It identifies potential exceptions and disparity cases, then creates evidence-backed proposals for human review.
 
-## Architecture
-See `docs/architecture.png` and `docs/architecture.pdf`.
+The application combines a React/Vite dashboard, a Python/FastAPI backend, PostgreSQL, and six deterministic Python agents. All employee and compensation records in the included dataset are synthetic. The analysis is a decision-support demo, not a legal finding or production compensation policy.
 
-## Frontend screenshots
-Screenshots below show the application using synthetic demo data.
+**Repository:** [soundaryaambiger-ship-it/compensation-equity-platform](https://github.com/soundaryaambiger-ship-it/compensation-equity-platform)
+
+---
+
+## 📸 Frontend screenshots
+
+These screenshots show the application using synthetic demonstration data.
 
 ### Overview dashboard
-![Overview dashboard](docs/screenshots/overview.png)
 
-### Overview with EquiQ assistant
+![EquityIQ Overview dashboard](docs/screenshots/overview.png)
+
+### Overview with the EquiQ assistant
+
 ![Overview with EquiQ assistant open](docs/screenshots/overview-assistant.png)
 
-### Compensation analysis and agent results
-![Overview agent results](docs/screenshots/overview-agent-results.png)
+### Agent output after running compensation analysis
+
+![Overview showing the six agents' results](docs/screenshots/overview-agent-results.png)
 
 ### Employee directory
-![Employee directory](docs/screenshots/employees.png)
 
-### Comparisons
+![Synthetic employee directory](docs/screenshots/employees.png)
+
+### Compensation comparisons
+
 ![Band positioning and compa-ratio results](docs/screenshots/comparisons-results.png)
 
-![Comparisons analysis running](docs/screenshots/comparisons-running.png)
+![Comparisons page while analysis is running](docs/screenshots/comparisons-running.png)
 
-### Approvals
-![Adjustment approval queue](docs/screenshots/approvals.png)
+### Approval queue
 
-To add or replace a screenshot, save the PNG under `docs/screenshots/`, add a Markdown image line such as `![Overview](docs/screenshots/overview.png)` in this section, then run:
+![Adjustment proposal approval queue](docs/screenshots/approvals.png)
+
+To add or replace a screenshot, save a PNG in `docs/screenshots/`, add a Markdown image link here (for example, `![Overview](docs/screenshots/overview.png)`), then commit and push the image and README.
+
+---
+
+## 🛠️ Technology stack
+
+| Layer | Technologies |
+|---|---|
+| Frontend | React, Vite, JavaScript |
+| Backend | Python, FastAPI |
+| Database | PostgreSQL |
+| ORM | SQLAlchemy |
+| Analysis engine | Six deterministic, rule-based Python agents |
+| API documentation | FastAPI / Swagger UI |
+| Synthetic data | Python, CSV, JSON |
+
+---
+
+## ✨ What the application does
+
+- Generates or loads synthetic employees, roles, levels, locations, compensation bands, and salary histories.
+- Normalizes salary values to INR and full-time equivalent (FTE) before comparison.
+- Uses effective-dated bands to calculate compa-ratio and band position.
+- Groups records by role, level, location, and salary year for comparison.
+- Flags potential pay disparity and data-quality exceptions for review.
+- Creates proposed adjustments with evidence and a pending human-review status.
+- Records proposal decisions as audit events; approving a proposal does **not** change an employee salary record.
+- Provides a local, rule-based EquiQ assistant for supported project questions and synthetic database lookups. No external AI API key is required.
+
+---
+
+## 📂 Project structure
+
+```text
+compensation-equity-platform/
+├── backend/
+│   ├── app/
+│   │   ├── agents/       # Six analysis agents and orchestrator
+│   │   ├── api/          # FastAPI routes
+│   │   ├── core/         # Application configuration
+│   │   ├── db/           # SQLAlchemy database setup
+│   │   ├── models/       # Database entities
+│   │   ├── schemas/      # Request schemas
+│   │   └── services/     # Analysis and assistant services
+│   ├── scripts/          # Generate, validate, initialize, and seed data
+│   ├── tests/
+│   ├── .env.example
+│   └── requirements.txt
+├── data/
+│   └── generated/        # Synthetic CSV/JSON seed data and evaluation files
+├── docs/
+│   ├── screenshots/
+│   ├── architecture.png
+│   ├── architecture.pdf
+│   └── data_dictionary.md
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   └── services/
+│   ├── .env.example
+│   └── package.json
+├── docker-compose.yml
+└── README.md
+```
+
+---
+
+## 📊 Synthetic dataset
+
+The repository includes reproducible synthetic seed data. The generator can recreate it with the same seed.
+
+| Dataset measure | Volume |
+|---|---:|
+| Employees | 5,000 |
+| Roles | 20 |
+| Levels | 10 |
+| Role/level combinations | 200 |
+| Locations | 5 |
+| Compensation bands | 1,000 |
+| Salary records | 15,000 |
+| Salary history | 3 years (2024–2026) |
+| Default random seed | `20261022` |
+
+Generated artifacts include CSV and JSON files, a separate `ground_truth` dataset, isolated edge-case fixtures, and a SHA-256 source manifest. Ground-truth labels are not used as analysis input features.
+
+---
+
+## 💻 Run locally (Windows PowerShell)
+
+### Prerequisites
+
+- Python 3.11 or newer (the commands below use Python 3.12)
+- Node.js 20 or newer and npm
+- PostgreSQL 15 or newer, or Docker Desktop with Docker Compose
+- Git
+
+### 1. Clone the repository
 
 ```powershell
-git add README.md docs/screenshots/overview.png
-git commit -m "Update frontend screenshots"
-git push
+git clone https://github.com/soundaryaambiger-ship-it/compensation-equity-platform.git
+Set-Location .\compensation-equity-platform
 ```
 
-Only publish screenshots with synthetic/demo data—never real employee names, IDs, or compensation.
+### 2. Create the database
 
-## Requirements
-- Python 3.11+
-- Node.js 20+
-- PostgreSQL 15+ or Docker Desktop with Docker Compose
+Start your local PostgreSQL service, then create the database if it does not already exist. Update the PostgreSQL installation version in the path if needed:
 
-## Run locally (Windows PowerShell)
-1. Start PostgreSQL using **one** of these options:
-
-   **Local PostgreSQL:** Install PostgreSQL for Windows and remember the password set for the `postgres` user. Create the project database (adjust `16` in the path if you installed another version; skip this if the database already exists):
-   ```powershell
-   & 'C:\Program Files\PostgreSQL\16\bin\psql.exe' -U postgres -h 127.0.0.1 -p 5432 -d postgres -c "CREATE DATABASE comp_equity;"
-   ```
-   If `psql.exe` is not at that path, find the `bin\psql.exe` under your PostgreSQL installation. You do not need to add it to `PATH` when using the full path above.
-
-   **Docker Desktop:** Install and start Docker Desktop, then open a new PowerShell terminal and verify `docker --version` and `docker compose version` work. From the project root, run:
-   ```powershell
-   docker compose up -d postgres
-   ```
-   Compose creates the `comp_equity` database. To open a PostgreSQL prompt inside the container, run `docker compose exec postgres psql -U postgres -d comp_equity`.
-
-2. Ensure `backend\.env` has a `DATABASE_URL` matching your local PostgreSQL username, password and port. The default is `postgresql+psycopg://postgres:postgres@localhost:5432/comp_equity`; update the password if you chose a different one during installation. The Compose database uses the default credentials. Copy `backend\.env.example` if needed.
-3. In PowerShell, run the backend setup from the project root:
-   ```powershell
-   Set-Location .\backend
-   py -3.12 -m venv .venv
-   .\.venv\Scripts\python.exe -m pip install -r requirements.txt
-   .\.venv\Scripts\python.exe -m scripts.generate_data --employees 5000 --seed 20261022 --out ..\data\generated
-   .\.venv\Scripts\python.exe -m scripts.validate_data ..\data\generated
-   .\.venv\Scripts\python.exe -m scripts.init_db
-   .\.venv\Scripts\python.exe -m scripts.seed_db ..\data\generated
-   .\.venv\Scripts\python.exe -m uvicorn app.main:app --reload --port 8000
-   ```
-4. In a second PowerShell terminal, run the frontend from the project root:
-   ```powershell
-   Set-Location .\frontend
-   npm install
-   npm run dev
-   ```
-5. Open http://localhost:5173. API documentation is at http://localhost:8000/docs.
-
-## Use the workflow
-1. **Overview** shows live database counts. Select **Run Compensation Analysis** to execute the six-agent pipeline and display data-derived findings, positioning metrics and sample outputs for each agent. **Employees** lists seeded synthetic employees.
-2. Open **Comparisons** or **Anomalies** to inspect detailed band or disparity findings. Analysis also creates pending review proposals in the database.
-3. Open **Approvals** to inspect proposal evidence and approve or reject a pending review. Decisions are recorded as status changes and audit events; approval does not change a salary record.
-
-To check the generated-data validations, run `.\.venv\Scripts\python.exe -m scripts.validate_data ..\data\generated` from `backend`. To verify fixed-seed reproducibility, run `.\.venv\Scripts\python.exe -m scripts.reproducibility_check` from `backend`.
-Run backend tests from `backend` with `python -m unittest discover -s tests`.
-EquiQ runs entirely locally without API keys or external AI services. It answers project reference questions and supported queries against the synthetic database, including employee ID lookups by name.
-
-## Run with Docker
-Install and start Docker Desktop before running these commands. From the project root:
-
-```bash
-docker compose up --build -d
-docker compose exec api python -m scripts.generate_data --employees 5000 --seed 20261022 --out /tmp/generated
-docker compose exec api python -m scripts.validate_data /tmp/generated
-docker compose exec api python -m scripts.seed_db /tmp/generated
+```powershell
+& 'C:\Program Files\PostgreSQL\16\bin\psql.exe' -U postgres -h 127.0.0.1 -p 5432 -d postgres -c "CREATE DATABASE comp_equity;"
 ```
-The API container creates the database tables on startup. These commands generate and validate the synthetic records inside the API container, then seed PostgreSQL. In a separate PowerShell terminal, start the frontend as described above.
 
-## API
-- `GET /api/v1/health`
-- `GET /api/v1/dashboard`
-- `GET /api/v1/employees?skip=0&limit=100`
-- `GET /api/v1/analysis` — runs the six-agent pipeline, returns findings and per-agent output summaries, and persists pending review proposals.
-- `GET /api/v1/proposals`
-- `POST /api/v1/assistant/chat` — answers reference questions and supported local database queries; no external AI service is called.
-- `POST /api/v1/proposals/{proposal_id}/decision?decision=APPROVED` (or REJECTED)
+Alternatively, start the Compose PostgreSQL service from the project root:
 
-## Six agents
-1. **DataQualityAgent** — checks FTE validity and missing currency conversion.
-2. **NormalizationAgent** — converts to INR and 1.0 FTE.
-3. **BandComplianceAgent** — checks band effective dates and computes compa-ratio/band position.
-4. **ComparabilityAgent** — groups by role, level and location.
-5. **DisparityAgent** — flags materially low salaries against the comparable-group median (initial demo threshold: 20%).
-6. **RecommendationAgent** — creates a proposed review amount and evidence summary. Human review remains mandatory.
-
-The 20% threshold is a hard-coded demo rule, not a legal finding or compensation policy. Before production use, HR/legal must approve the policy, add documented job-related explanatory factors to the model, secure endpoints, add role-based access, and perform fairness/privacy validation.
-
-## Important implementation notes / limitations
-- The included synthetic generator exports master/transaction CSV and JSON, `ground_truth`, negative scenario descriptions, isolated `edge_case_fixtures.csv/json`, and a SHA-256 source manifest. The edge-case fixtures are deliberately not loaded into the baseline database. It is deterministic for a fixed seed.
-- `ground_truth` and negative scenarios are separate evaluation artefacts; do not load them as model input features.
-- The baseline analysis compares role + level + location + salary year. Performance rating, tenure, promotions and FTE are included as contextual evidence, not used as statistical adjustment factors. The isolated negative fixtures are not exercised by the baseline analysis, and the project does not currently calculate precision/recall against `ground_truth`.
-- The floating EquiQ assistant uses local rules and synthetic database queries; it does not call an external AI service. The six analysis agents remain deterministic Python rules, not autonomous LLM agents.
-- The demo approval endpoint is not authenticated. Add SSO/RBAC, CSRF protection, audit retention, encryption and approval segregation before production.
-- The generated data generator includes synthetic annual salary history, performance, tenure and promotions. Review `data_dictionary.md` for units and semantics.
-
-## Reproducibility
-Run the generator twice to separate output directories with the same seed and compare `source_manifest.json` SHA-256 values. The manifest excludes itself. Example:
-```bash
-python -m scripts.generate_data --employees 5000 --seed 20261022 --out ..\data\run_a
-python -m scripts.generate_data --employees 5000 --seed 20261022 --out ..\data\run_b
+```powershell
+docker compose up -d postgres
 ```
+
+### 3. Set up and start the backend
+
+From the project root:
+
+```powershell
+Set-Location .\backend
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+Copy-Item .env.example .env
+```
+
+Edit `backend\.env` and set `DATABASE_URL` to match your local PostgreSQL username and password. For example:
+
+```env
+DATABASE_URL=postgresql+psycopg://postgres:YOUR_PASSWORD@localhost:5432/comp_equity
+```
+
+The checked-in generated dataset can be validated and loaded as follows:
+
+```powershell
+python -m scripts.validate_data ..\data\generated
+python -m scripts.init_db
+python -m scripts.seed_db ..\data\generated
+python -m uvicorn app.main:app --reload --port 8000
+```
+
+The API is available at `http://localhost:8000`; interactive API documentation is at `http://localhost:8000/docs`.
+
+To regenerate the synthetic data before validation and seeding:
+
+```powershell
+python -m scripts.generate_data --employees 5000 --seed 20261022 --out ..\data\generated
+```
+
+### 4. Set up and start the frontend
+
+Open a second PowerShell terminal at the project root:
+
+```powershell
+Set-Location .\frontend
+npm install
+Copy-Item .env.example .env
+npm run dev
+```
+
+Open `http://localhost:5173`. The frontend API URL defaults to `http://localhost:8000/api/v1`; change `VITE_API_URL` in `frontend\.env` only if your backend uses a different address.
+
+---
+
+## 🤖 Six-agent analysis workflow
+
+Select **Run Compensation Analysis** on the Overview page to execute the pipeline. The dashboard displays each agent's output count and sample results.
+
+| Agent | Responsibility |
+|---|---|
+| **Data quality** | Flags invalid FTE, marked FTE exceptions, and missing currency conversions. |
+| **Normalization** | Converts salary to INR and normalizes to 1.0 FTE. |
+| **Band compliance** | Selects the effective band for a salary date and calculates compa-ratio and band position. |
+| **Comparability** | Groups records by role, level, location, and salary year. |
+| **Disparity detection** | Flags salaries below 80% of the group median when the comparison group has at least three records. |
+| **Recommendation** | Produces a pending human-review proposal with supporting evidence. |
+
+The agents are deterministic Python rules, not autonomous LLM agents. The pipeline does not directly change salary records.
+
+### Compensation calculations
+
+```text
+Compa-ratio = Normalized annual salary / Compensation band midpoint
+
+Band position = (Normalized salary - Band minimum) / (Band maximum - Band minimum)
+```
+
+Band positions below `0` are below band; values above `1` are above band. The 20% disparity threshold is a demonstration rule only, not an approved policy or legal conclusion.
+
+---
+
+## 🧭 Application modules
+
+| Module | Purpose |
+|---|---|
+| **Overview** | Live database metrics, latest-salary positioning, role-family summaries, workflow, and agent results |
+| **Employees** | Browse synthetic employee records |
+| **Comparisons** | Inspect band positioning and compa-ratio results |
+| **Anomalies** | Inspect potential pay disparity findings |
+| **Approvals** | Review proposals and record approve/reject decisions |
+| **EquiQ assistant** | Answer supported project and synthetic database questions locally |
+
+---
+
+## 🔌 API endpoints
+
+All endpoints are under `/api/v1`.
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| `GET` | `/health` | Backend health check |
+| `GET` | `/dashboard` | Live counts, latest-salary summaries, role-family data, and recent audit events |
+| `GET` | `/employees` | Retrieve synthetic employee records |
+| `GET` | `/analysis` | Run the agent pipeline, return findings, and create pending proposals |
+| `GET` | `/proposals` | Retrieve adjustment proposals |
+| `POST` | `/proposals/{proposal_id}/decision` | Approve or reject a pending proposal |
+| `POST` | `/assistant/chat` | Ask the local EquiQ assistant a supported question |
+
+---
+
+## ✅ Validation and tests
+
+Run these commands from `backend` with the virtual environment active:
+
+```powershell
+python -m scripts.validate_data ..\data\generated
+python -m scripts.reproducibility_check
+python -m unittest discover -s tests -v
+```
+
+The validator checks generated records and relationships. The reproducibility check compares fixed-seed outputs and checksums.
+
+---
+
+## ⚠️ Scope and limitations
+
+- All included employee and compensation data is synthetic. Do not load confidential or real HR information into this demo.
+- Performance, tenure, promotion history, and FTE are supplied as contextual evidence; they are not currently statistical adjustment factors.
+- Isolated edge-case fixtures are generated but are not loaded into the baseline database or exercised by the baseline analysis.
+- Automated precision, recall, and F1 evaluation against ground truth is not currently implemented.
+- The disparity threshold is a hard-coded demonstration rule and needs HR/legal approval before any production use.
+- The approval API is not authenticated. A production system would require authentication, role-based access, approval segregation, secure audit retention, encryption, and privacy/fairness validation.
+
+---
+
+## 📚 Documentation
+
+- [Data dictionary](docs/data_dictionary.md)
+- [Acceptance criteria](docs/acceptance_criteria.md)
+- [File guide](docs/file_guide.md)
+- [Architecture diagram](docs/architecture.png)
+- [Architecture document](docs/architecture.pdf)
+- [Screenshot files](docs/screenshots/)
+
+---
+
+**EquityIQ — making compensation analysis more transparent, traceable, and evidence-driven.**
