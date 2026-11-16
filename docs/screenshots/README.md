@@ -1,6 +1,6 @@
 # Frontend screenshots
 
-Put sanitized frontend captures in this directory, for example:
+Save frontend captures in this directory, for example:
 
 - `overview.png`
 - `employees.png`
@@ -8,7 +8,7 @@ Put sanitized frontend captures in this directory, for example:
 - `anomalies.png`
 - `approvals.png`
 
-Embed an image in the root README with a relative link such as:
+To display a screenshot on the GitHub project page, add a relative Markdown image link to the root `README.md`:
 
 ```markdown
 ![Overview](docs/screenshots/overview.png)

@@ -15,13 +15,25 @@ A full-stack, synthetic-data reference implementation for effective-dated compen
 See `docs/architecture.png` and `docs/architecture.pdf`.
 
 ## Frontend screenshots
-Save frontend screenshots in `docs/screenshots/` using PNG or JPEG files. For example, save the Overview capture as `docs/screenshots/overview.png`, then embed it in this README with:
+To show a frontend screenshot on this GitHub project page:
+
+1. Run the app and open the page you want to capture (for example, `http://localhost:5173` for Overview).
+2. Save a PNG or JPEG image under `docs/screenshots/`. Use a clear name such as `overview.png`.
+3. Add the following Markdown where the image should appear in this README:
 
 ```markdown
 ![Compensation equity Overview](docs/screenshots/overview.png)
 ```
 
-Only use synthetic/demo data in screenshots; do not publish real employee names, IDs, or compensation.
+4. Commit and push the image and README change:
+
+   ```powershell
+   git add README.md docs/screenshots/overview.png
+   git commit -m "Add Overview screenshot"
+   git push
+   ```
+
+Repeat with a different filename and caption for pages such as Employees or Approvals. Only publish screenshots with synthetic/demo data—never real employee names, IDs, or compensation.
 
 ## Requirements
 - Python 3.11+
